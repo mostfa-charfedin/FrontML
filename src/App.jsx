@@ -34,19 +34,7 @@ function ModelBadge({ model }) {
   return <span className="model-tag">{info.tag}</span>
 }
 
-function ConfidenceBar({ value }) {
-  return (
-    <div className="confidence-bar-wrap">
-      <div className="confidence-bar-bg">
-        <div
-          className="confidence-bar-fill"
-          style={{ width: `${value}%`, background: value > 80 ? '#d16b8d' : value > 60 ? '#fdb084' : '#8e527d' }}
-        />
-      </div>
-      <span className="confidence-pct">{value}%</span>
-    </div>
-  )
-}
+
 
 function App() {
   const [activeTab, setActiveTab] = useState('skin')
@@ -186,7 +174,7 @@ function App() {
                 <div className="result-label"><Activity size={16} /> Résultat de l'analyse</div>
 
                 <div className="result-value" style={{ color: skinInfo.color }}>{skinInfo.desc}</div>
-                {result.confidence && <ConfidenceBar value={result.confidence} />}
+
                 <div className="result-meta">
                   Modèle : <ModelBadge model={result.model_used} />
                   {isMock && <span className="result-mock-badge">Mode Démo</span>}
@@ -371,11 +359,7 @@ function App() {
                 <div className="result-label"><Heart size={16} /> Recommandations IA</div>
                 <div className="product-cat-header">
                   <span className="product-cat-badge"> {result.category}</span>
-                  {result.confidence && (
-                    <div style={{ marginTop: '0.5rem' }}>
-                      <ConfidenceBar value={result.confidence} />
-                    </div>
-                  )}
+
                   <div className="result-meta" style={{ marginTop: '0.8rem' }}>
                     Modèle : <ModelBadge model={result.model_used} />
                   </div>
