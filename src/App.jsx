@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-const API_BASE_URL = 'http://127.0.0.1:5000/api'
+const API_BASE_URL = 'https://bckendml.onrender.com/api'
 
 // Skin type emoji & color mapping
 const SKIN_MAP = {
-  'Dry':         { emoji: '🏜️', color: '#f59e0b', desc: 'Peau Sèche' },
-  'Oily':        { emoji: '✨', color: '#38bdf8', desc: 'Peau Grasse' },
-  'Normal':      { emoji: '🌿', color: '#10b981', desc: 'Peau Normale' },
+  'Dry': { emoji: '🏜️', color: '#f59e0b', desc: 'Peau Sèche' },
+  'Oily': { emoji: '✨', color: '#38bdf8', desc: 'Peau Grasse' },
+  'Normal': { emoji: '🌿', color: '#10b981', desc: 'Peau Normale' },
   'Combination': { emoji: '⚖️', color: '#818cf8', desc: 'Peau Mixte' },
 }
 
@@ -20,12 +20,12 @@ const CLUSTER_COLOR = {
 
 // Model labels
 const MODEL_LABELS = {
-  rf:     { label: 'Random Forest', tag: 'RF' },
-  xgb:    { label: 'XGBoost',       tag: 'XGB' },
-  ann:    { label: 'Neural Network', tag: 'ANN' },
-  kmeans: { label: 'K-Means',       tag: 'K-Means' },
-  dbscan: { label: 'DBSCAN',        tag: 'DBSCAN' },
-  knn:    { label: 'K-NN',          tag: 'KNN' },
+  rf: { label: 'Random Forest', tag: 'RF' },
+  xgb: { label: 'XGBoost', tag: 'XGB' },
+  ann: { label: 'Neural Network', tag: 'ANN' },
+  kmeans: { label: 'K-Means', tag: 'K-Means' },
+  dbscan: { label: 'DBSCAN', tag: 'DBSCAN' },
+  knn: { label: 'K-NN', tag: 'KNN' },
 }
 
 function ModelBadge({ model }) {
@@ -137,7 +137,7 @@ function App() {
               <div className="form-grid">
                 <div className="input-group full-width">
                   <label>🤖 Modèle IA à utiliser</label>
-                  <select value={skinForm.model_choice} onChange={e => setSkinForm({...skinForm, model_choice: e.target.value})}>
+                  <select value={skinForm.model_choice} onChange={e => setSkinForm({ ...skinForm, model_choice: e.target.value })}>
                     <option value="rf">🌲 Random Forest</option>
                     <option value="xgb">⚡ XGBoost</option>
                     <option value="ann">🧠 Neural Network (ANN)</option>
@@ -145,11 +145,11 @@ function App() {
                 </div>
                 <div className="input-group">
                   <label>🎂 Âge du patient</label>
-                  <input type="number" min="1" max="120" required value={skinForm.age} onChange={e => setSkinForm({...skinForm, age: e.target.value})} placeholder="Ex: 25" />
+                  <input type="number" min="1" max="120" required value={skinForm.age} onChange={e => setSkinForm({ ...skinForm, age: e.target.value })} placeholder="Ex: 25" />
                 </div>
                 <div className="input-group">
                   <label>⚡ Sensibilité cutanée</label>
-                  <select value={skinForm.sensitivity} onChange={e => setSkinForm({...skinForm, sensitivity: e.target.value})}>
+                  <select value={skinForm.sensitivity} onChange={e => setSkinForm({ ...skinForm, sensitivity: e.target.value })}>
                     <option value="Low">😌 Basse (Low)</option>
                     <option value="Medium">😐 Moyenne (Medium)</option>
                     <option value="High">😬 Haute (High)</option>
@@ -157,11 +157,11 @@ function App() {
                 </div>
                 <div className="input-group">
                   <label>💧 Humidité ambiante (%)</label>
-                  <input type="number" step="0.1" min="0" max="100" required value={skinForm.humidity} onChange={e => setSkinForm({...skinForm, humidity: e.target.value})} placeholder="Ex: 50" />
+                  <input type="number" step="0.1" min="0" max="100" required value={skinForm.humidity} onChange={e => setSkinForm({ ...skinForm, humidity: e.target.value })} placeholder="Ex: 50" />
                 </div>
                 <div className="input-group">
                   <label>🌡️ Température (°C)</label>
-                  <input type="number" step="0.1" required value={skinForm.temperature} onChange={e => setSkinForm({...skinForm, temperature: e.target.value})} placeholder="Ex: 20" />
+                  <input type="number" step="0.1" required value={skinForm.temperature} onChange={e => setSkinForm({ ...skinForm, temperature: e.target.value })} placeholder="Ex: 20" />
                 </div>
               </div>
               <button type="submit" className="submit-btn" disabled={loading}>
@@ -254,25 +254,25 @@ function App() {
               <div className="form-grid">
                 <div className="input-group full-width">
                   <label>🤖 Algorithme de clustering</label>
-                  <select value={patientForm.model_choice} onChange={e => setPatientForm({...patientForm, model_choice: e.target.value})}>
+                  <select value={patientForm.model_choice} onChange={e => setPatientForm({ ...patientForm, model_choice: e.target.value })}>
                     <option value="kmeans">🎯 K-Means (Clustering par centre)</option>
                     <option value="dbscan">🔍 DBSCAN (Densité & Détection anomalies)</option>
                   </select>
                 </div>
                 <div className="input-group">
                   <label>🎂 Âge du patient</label>
-                  <input type="number" min="1" max="120" required value={patientForm.age} onChange={e => setPatientForm({...patientForm, age: e.target.value})} placeholder="Ex: 30" />
+                  <input type="number" min="1" max="120" required value={patientForm.age} onChange={e => setPatientForm({ ...patientForm, age: e.target.value })} placeholder="Ex: 30" />
                 </div>
                 <div className="input-group">
                   <label>👤 Genre</label>
-                  <select value={patientForm.gender} onChange={e => setPatientForm({...patientForm, gender: e.target.value})}>
+                  <select value={patientForm.gender} onChange={e => setPatientForm({ ...patientForm, gender: e.target.value })}>
                     <option value="Female">♀️ Femme</option>
                     <option value="Male">♂️ Homme</option>
                   </select>
                 </div>
                 <div className="input-group">
                   <label>🩸 Groupe Sanguin</label>
-                  <select value={patientForm.blood_type} onChange={e => setPatientForm({...patientForm, blood_type: e.target.value})}>
+                  <select value={patientForm.blood_type} onChange={e => setPatientForm({ ...patientForm, blood_type: e.target.value })}>
                     <option value="A+">A+</option><option value="A-">A-</option>
                     <option value="B+">B+</option><option value="B-">B-</option>
                     <option value="AB+">AB+</option><option value="AB-">AB-</option>
@@ -325,34 +325,34 @@ function App() {
               <div className="form-grid">
                 <div className="input-group full-width">
                   <label>🤖 Modèle de recommandation</label>
-                  <select value={productForm.model_choice} onChange={e => setProductForm({...productForm, model_choice: e.target.value})}>
+                  <select value={productForm.model_choice} onChange={e => setProductForm({ ...productForm, model_choice: e.target.value })}>
                     <option value="ann">🧠 Neural Network (ANN / MLP)</option>
                     <option value="knn">📍 K-Nearest Neighbors (KNN)</option>
                   </select>
                 </div>
                 <div className="input-group">
                   <label>❤️ Nombre de "Loves"</label>
-                  <input type="number" min="0" required value={productForm.loves_count} onChange={e => setProductForm({...productForm, loves_count: e.target.value})} placeholder="Ex: 5000" />
+                  <input type="number" min="0" required value={productForm.loves_count} onChange={e => setProductForm({ ...productForm, loves_count: e.target.value })} placeholder="Ex: 5000" />
                 </div>
                 <div className="input-group">
                   <label>⭐ Note moyenne (0–5)</label>
-                  <input type="number" step="0.1" min="0" max="5" required value={productForm.rating} onChange={e => setProductForm({...productForm, rating: e.target.value})} placeholder="Ex: 4.5" />
+                  <input type="number" step="0.1" min="0" max="5" required value={productForm.rating} onChange={e => setProductForm({ ...productForm, rating: e.target.value })} placeholder="Ex: 4.5" />
                 </div>
                 <div className="input-group">
                   <label>💬 Nombre de Reviews</label>
-                  <input type="number" min="0" required value={productForm.reviews} onChange={e => setProductForm({...productForm, reviews: e.target.value})} placeholder="Ex: 200" />
+                  <input type="number" min="0" required value={productForm.reviews} onChange={e => setProductForm({ ...productForm, reviews: e.target.value })} placeholder="Ex: 200" />
                 </div>
                 <div className="input-group">
                   <label>💰 Prix max variante ($)</label>
-                  <input type="number" step="0.1" min="0" required value={productForm.child_max_price} onChange={e => setProductForm({...productForm, child_max_price: e.target.value})} placeholder="Ex: 60" />
+                  <input type="number" step="0.1" min="0" required value={productForm.child_max_price} onChange={e => setProductForm({ ...productForm, child_max_price: e.target.value })} placeholder="Ex: 60" />
                 </div>
                 <div className="input-group">
                   <label>💲 Prix min variante ($)</label>
-                  <input type="number" step="0.1" min="0" required value={productForm.child_min_price} onChange={e => setProductForm({...productForm, child_min_price: e.target.value})} placeholder="Ex: 20" />
+                  <input type="number" step="0.1" min="0" required value={productForm.child_min_price} onChange={e => setProductForm({ ...productForm, child_min_price: e.target.value })} placeholder="Ex: 20" />
                 </div>
                 <div className="input-group">
                   <label>🛒 Mon budget ($)</label>
-                  <input type="number" step="0.1" min="0" required value={productForm.price_usd} onChange={e => setProductForm({...productForm, price_usd: e.target.value})} placeholder="Ex: 40" />
+                  <input type="number" step="0.1" min="0" required value={productForm.price_usd} onChange={e => setProductForm({ ...productForm, price_usd: e.target.value })} placeholder="Ex: 40" />
                 </div>
               </div>
               <button type="submit" className="submit-btn" disabled={loading}>
